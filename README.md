@@ -1,36 +1,77 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Business Information Scraper
 
-## Getting Started
+A full-stack web application that intelligently scrapes business websites (handling both static HTML and modern JavaScript SPAs) to automatically generate structured, editable, and exportable Business Plans using AI.
 
-First, run the development server:
+## Setup Instructions
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### Prerequisites
+- Node.js (v18 or higher recommended)
+- npm or yarn
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Installation
+1. **Clone the repository:**
+   ```bash
+   git clone [repo-link]
+   cd business-scraper
+   ```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+2. **Install dependencies:**
+    ```bash
+    npm install
+    ```
+3. **Environment Variables:**
+    ```bash
+    OPENAI_API_KEY=your_api_key_here
+    ```
+4. **Run the development server:**
+    ```bash
+    npm run dev
+    ```
+    Open http://localhost:3000 in your browser to view the application.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Features Implemented
 
-## Learn More
+- **Dual-Scraping Engine:** Automatically handles both Static/SSR sites and modern SPAs.
 
-To learn more about Next.js, take a look at the following resources:
+- **Ethical Scraping Compliance:** Respects robots.txt instructions before initiating crawls.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Targeted Pathing:** Prioritizes high-value business pages (/about, /products, /team) while filtering out noise.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **Interactive Preview Modal:** A schema-driven form allowing users to manually edit, add, or correct extracted data.
 
-## Deploy on Vercel
+- **Manual Data Entry:** Supports direct text upload (.txt files) or manual pasting if scraping is blocked.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **PDF Generation:** Exports the final business plan into a clean, print-optimized PDF document.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Architecture
+
+The system is designed with a "Fallback-first" architecture to handle unpredictable nature of moderm web pages:
+
+1. **Ethics Check:** The scraper first queries `robots.txt` using the `robots-parser` library. If scraping is disallowed, the backend rejects and the UI guides the user to an alternative flow.
+
+2. **Scraping:**
+    - The scraper initially fetches the URL using `axios` and parses it with `cheerio`. It strips out `<nav>`, `<footer>`, `<script>`,...etc., tags to extract core text of the site.
+
+    - **The fallback:** If Cheerio returns an empty "skeleton" (*under 200 characters of text or 0 links*), which is a sign of modern React/Next.js SPA, the system falls back to **Playwright**.
+
+    - **Playwright:** It launches a headless browser, waits for the `networkidle` event (*allowing React/Vue to hydrate the DOM*), and successfully extracts the dynamically rendered text.
+
+3. **Crawling:** Extracted links are filtered against an "Acceptable Keywords" list (*e.g., about, services*) and scored. The crawler only visits the highest-value pages, capped at 10 pages limit to prevent timeout errors and token-limit-exhaustion.
+
+### OpenAI (gpt-4o)
+
+This API was chosen for its strong JSON-mode adherence, allowing the massive string of scraped website content to be accurately mapped directly into the application's TypeScript BusinessPlan interface.
+
+## Demo Video
+
+
+
+
+## Trade-off & Limitations
+
+**Anti-Bot Protection:** Sites using advanced Cloudflare protection will actively block Playwright, resulting in a 403 error. In these cases, the scraper fails gracefully and relies on the user's manual text upload.
+
+
+## Future Improvements
+
+- **Concurrent Scraping:** To scrape all the prioritized links in parallel rather than sequentially, drastically reducing the total wait time for the user.
