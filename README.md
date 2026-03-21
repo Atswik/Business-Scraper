@@ -11,15 +11,15 @@ A full-stack web application that intelligently scrapes business websites (handl
 ### Installation
 1. **Clone the repository:**
    ```bash
-   git clone [repo-link]
-   cd business-scraper
+   git clone https://github.com/Atswik/Business-Scraper.git
+   cd Business-Scraper
    ```
 
 2. **Install dependencies:**
     ```bash
     npm install
     ```
-3. **Environment Variables:**
+3. **Environment Variables:** Create a .env file
     ```bash
     OPENAI_API_KEY=your_api_key_here
     ```
@@ -64,7 +64,7 @@ This API was chosen for its strong JSON-mode adherence, allowing the massive str
 
 ## Demo Video
 
-
+[![Business Scraper Demo](https://img.youtube.com/vi/bPScXP9T5-g/maxresdefault.jpg)](https://youtu.be/bPScXP9T5-g)
 
 
 ## Trade-off & Limitations
@@ -74,4 +74,5 @@ This API was chosen for its strong JSON-mode adherence, allowing the massive str
 
 ## Future Improvements
 
-- **Concurrent Scraping:** To scrape all the prioritized links in parallel rather than sequentially, drastically reducing the total wait time for the user.
+- **Concurrent Scraping:** To scrape all the prioritized links in parallel rather than sequentially, reducing the total wait time for the user.
+- **Rich Media Extraction:** Expand the scraper to extract company logos, founder headshots, and other relevant images and inject them into final business plan display and the PDF export to create a more polished document instead of just plain text.
