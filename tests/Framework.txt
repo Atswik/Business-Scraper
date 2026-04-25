@@ -1,0 +1,62 @@
+Framework Computer, Inc. is an American personal computer manufacturer. The company positions itself as a proponent of the right-to-repair movement, and their laptops are designed to be easy to disassemble, with replaceable parts.
+
+In January 2020, the company was founded by Nirav Patel, who worked on software at Apple and later was the original Head of Hardware at Oculus.
+
+In the first half of 2021, Framework was funded with a $9 million seed round.
+
+In September 2021, YouTuber Linus Sebastian invested $225,000 in the company after having previously commended the 11th Gen Intel Framework Laptop 13.
+
+In January 2022, the company raised an additional $18 million of financing in a series A round, led by Spark Capital.
+
+In April 2024, the company raised an additional $17 million of financing in a series A-1 round, led by Spark Capital, with Buckley Ventures, Anzu Partners, Cooler Master, and Pathbreaker Ventures. In addition to the $17 million, the company is opening up $1 million to equity crowdfunding through $10,000 investments. The company announced its expansion into other areas of consumer electronics with this round.
+
+Products
+
+Framework works with an original design manufacturing (ODM) partner Compal Electronics to build its products.
+
+Framework Laptop 13
+
+In July 2021, Framework began fulfillment of their first product, the Framework Laptop (retroactively the Framework Laptop 13), with an 11th Gen Intel Core i5 or i7 chip to the US and Canada. In December 2021, Framework opened pre-orders to the UK, Germany and France. In February 2022, pre-ordering became available for Ireland, Austria and The Netherlands.
+
+The Framework Laptop received a 10 out of 10 in iFixit's repairability score. The standard Framework Laptop ships as a fully assembled laptop, while the Framework Laptop DIY Edition ships with the RAM, storage, operating system, and in 11th Gen, the WiFi module uninstalled. All of these modules can be ordered with the DIY edition for an additional fee, or left out and purchased separately.
+
+In May 2022, the company launched their Framework Laptop with a 12th Gen Intel Core i5 or i7 chip that ships with an upgraded back panel, alongside their 12 Gen Upgrade Kit, to allow 11th Gen users to upgrade their laptops. In September 2022, pre-ordering became available for Australia.
+
+In September 2022, the company launched a Chromebook edition based on their 12th Gen Intel model for $999. Unlike the standard laptop, the Chromebook's specification is fixed to an i5-1240P, 8 GB of RAM, and a 256 GB SSD, but it retains the same upgradability as the standard laptop. Framework claims that the Chromebook edition has upgraded speakers and batteries compared to the standard laptop, but the speakers were described as "muffled" by ZDnet and the battery life was rated as quite poor for a Chromebook by ZDnet, Engadget, and PCMag. The Chromebook was also criticized for its price.
+
+In March 2023, the company announced their Framework Laptop featuring 13th Gen Intel Core and AMD Ryzen 7040 processors. The designation of Framework Laptop 13 was adopted to distinguish it from the concurrently announced Framework Laptop 16. During this same event, Framework announced a higher capacity 61 Wh battery, a matte display option, and a Cooler Master case to house Framework motherboards.[36] The initial shipments of the AMD-based Framework laptops were delayed due to electrical and firmware related issues.
+
+In May 2024, the company announced their Framework Laptop 13 featuring an Intel Core Ultra Series 1 processor.
+
+In February 2025, the company announced their Framework Laptop 13 featuring AMD Ryzen AI 300 series as well as adding the improvements introduced with the Intel model. The upgraded model supports up to 96 GB of DDR5 memory and has a 2.8K 120 Hz display. The design retains Framework's emphasis on modularity, ensuring that most parts are compatible with earlier releases. Pricing for the DIY edition starts at $899, pre-built systems start at $1,099.
+
+Battery life
+
+The initial 55 Wh battery in the original Intel 11th Gen CPU Model has been described as middling. This feedback was addressed with the release of a 61 Wh battery, available as an option in the 2023 edition of the laptop. An Ars Technica review found that the battery life of the 13th Gen Intel motherboard was significantly improved over prior designs, gaining a 40% uplift in PCMark's battery test but remaining mostly the same when running Handbrake, despite the reviewer testing battery life with the 55 Wh battery from their previous machine; with an upgrade to the 61 Wh battery, the runtime improved by another 13%.
+
+The AMD Ryzen 7040U series option also showed additional battery life, better performance, less heat, and lower fan noise when idle, leading some to suggest that it rendered Intel models obsolete.
+
+The battery drains even in a complete shut down state within UEFI version 3.07 or earlier with the 11th Intel Core motherboard, later fixed in UEFI unofficial version 3.08.
+
+Framework Laptop 16
+
+Framework Laptop 16 is a larger laptop announced at the promotional Next Level event in March 2023. It has an expansion bay that can attach PCIe components such as a dedicated GPU, as well as adapt the laptop's cooling system, a fully customizable keyboard that can connect a numpad, and change the input modules, and 6 expansion card slots. In February 2024, Framework began fulfillment of the Framework Laptop 16, with an AMD Ryzen 7040 series processor.
+
+In August 2025, Framework announced their Framework Laptop 16 featuring AMD Ryzen AI 300 series processor, adding an optional Nvidia GeForce RTX 5070 expansion bay GPU module, which is backwards compatible with the 2024 model; shipments were set to begin in November 2025, but later shipped in December 2025.
+
+Framework Laptop 12
+
+Framework Laptop 12 in tablet mode, displaying a website with a virtual keyboard.
+The Framework Laptop 12 is a 2-in-1 convertible laptop announced at the 2nd Gen event in February 2025. The Framework Laptop 12 is designated as a smaller, lower-cost model compared to the Framework Laptop 13 and 16 previously offered. It features a 12-inch WUXGA touchscreen, and it is compatible with MPP 2.0 and USI 2.0 stylus types. It has tablet mode. In June 2025, Framework began fulfillment of the Framework Laptop 12, with a 13th Gen Intel Core processor.
+
+Framework Desktop
+
+The Framework Desktop is a Mini-ITX workstation announced at the 2nd Gen event in February 2025, containing an AMD Strix Halo APU. The desktop is designed to be modular, containing two front-side expansion card slots as seen in its laptop models. The computer's front-side panel also has slots for 21 interchangeable tiles, allowing for users to customize the appearance of the machine.
+
+Marketplace
+
+The Framework Marketplace is an online store service hosted on the Framework website that primarily sells parts and tools that can be used to upgrade and repair the Framework Laptop. These include, but are not limited to, replacement motherboards, batteries, entire screen assemblies, RAM, and storage drives. The Marketplace also sells customization parts, including screen bezels, keyboard layouts, and expansion cards. In addition to computer-related items, the Marketplace also includes merchandise.
+
+Logistics
+
+Framework works with a logistics partner Dimerco to distribute its products. A logistics staffer mentioned Dimerco managing a complex e-commerce fulfillment process of Framework's highly customizable products from Taiwan.

@@ -1,7 +1,7 @@
 
 import * as cheerio from 'cheerio';
 import axios from 'axios';
-import { webkit } from 'playwright';
+import { webkit, Browser } from 'playwright';
 
 const ACCEPTABLE_KEYWORDS = [
     'about', 'about-us', 'our-story',
@@ -20,8 +20,9 @@ export function prioritizeURLs(urls: string[]): string[] {
 }
 
 async function scrapeWithPlaywright(url: string, baseDomain: string): Promise<{ content: string, links: string[] }> {
-    const browser = await webkit.launch({ headless: true });
+    let browser: Browser | null = null;
     try {
+        browser = await webkit.launch({ headless: true });
         const page = await browser.newPage();
         await page.goto(url, { waitUntil: 'networkidle', timeout: 15000 });
 
@@ -47,7 +48,9 @@ async function scrapeWithPlaywright(url: string, baseDomain: string): Promise<{ 
         console.error('Error scraping page:', error);
         return { content: '', links: [] };
     } finally {
-        await browser.close();
+        if (browser) {
+            await browser.close();
+        }
     }
 }
 
