@@ -12,11 +12,6 @@ export async function POST(req: Request) {
             return NextResponse.json({ error: 'Invalid input. Please provide a valid text.' }, { status: 400 });
         }
 
-        return NextResponse.json({
-            message: 'Text received successfully.',
-            text
-        }, { status: 200 });
-
         const businessPlan = await extractBusinessInfo(text);
 
         return NextResponse.json({
