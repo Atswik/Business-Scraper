@@ -1,6 +1,10 @@
 import { extractBusinessInfo } from "@/lib/aiExtractor";
 import { NextResponse } from "next/server";
 
+export const config = {
+    maxDuration: 60, // seconds
+};
+
 export async function POST(req: Request) {
     try {
         const body = await req.json();

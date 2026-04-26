@@ -29,7 +29,7 @@ async function scrapeWithPlaywright(url: string, baseDomain: string): Promise<{ 
             headless: true,
         });
         const page = await browser.newPage();
-        await page.goto(url, { waitUntil: 'networkidle', timeout: 15000 });
+        await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 15000 });
 
         const result = await page.evaluate((domain) => {
             const links = Array.from(document.querySelectorAll('a'))
