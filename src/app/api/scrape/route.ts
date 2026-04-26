@@ -11,6 +11,8 @@ function normalizeUrl(url: string): string {
     return url;
 }
 
+export const maxDuration = 60;
+
 export async function POST(request: Request) {
     try {
         const body = await request.json();

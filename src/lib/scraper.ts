@@ -2,7 +2,7 @@
 import * as cheerio from 'cheerio';
 import axios from 'axios';
 import { chromium as playwright, Browser } from 'playwright-core';
-import chromium from '@sparticuz/chromium';
+import chromium from '@sparticuz/chromium-min';
 
 const ACCEPTABLE_KEYWORDS = [
     'about', 'about-us', 'our-story',
@@ -22,14 +22,29 @@ export function prioritizeURLs(urls: string[]): string[] {
 
 async function scrapeWithPlaywright(url: string, baseDomain: string): Promise<{ content: string, links: string[] }> {
     let browser: Browser | null = null;
+    const isLocal = process.env.NODE_ENV === 'development';
     try {
+        console.log('Scraping with Playwright...INSIDE TRY BLOCK');
+
+        const executablePath = isLocal
+            ? '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
+            : await chromium.executablePath('https://github.com/Sparticuz/chromium/releases/download/v130.0.0/chromium-v130.0.0-pack.tar');
+
+        console.log('Executable path:', executablePath);
+        console.log('Args:', isLocal ? [] : chromium.args);
+
         browser = await playwright.launch({
-            args: chromium.args,
-            executablePath: await chromium.executablePath(),
+            args: isLocal ? [] : chromium.args,
+            executablePath: executablePath,
             headless: true,
         });
         const page = await browser.newPage();
-        await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 15000 });
+        await page.goto(url, { waitUntil: 'load', timeout: 15000 });
+
+        // await page.waitForLoadState('networkidle', { timeout: 5000 })
+        //     .catch(() => console.log('networkidle timeout - proceeding with load'));
+
+        console.log('Page loaded successfully');
 
         const result = await page.evaluate((domain) => {
             const links = Array.from(document.querySelectorAll('a'))
@@ -43,6 +58,8 @@ async function scrapeWithPlaywright(url: string, baseDomain: string): Promise<{ 
             const content = main ? (main as HTMLElement).innerText : '';
             return { content, urls: links };
         }, baseDomain);
+
+        console.log('Result:', result);
 
         return {
             content: result.content.replace(/\s+/g, ' ').trim(),
@@ -186,7 +203,7 @@ export async function crawler(startURL: string): Promise<string> {
         }
     }
 
-    // console.log(allContent)
+    console.log(allContent)
 
     return allContent;
 }

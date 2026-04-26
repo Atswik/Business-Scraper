@@ -1,10 +1,6 @@
 import { extractBusinessInfo } from "@/lib/aiExtractor";
 import { NextResponse } from "next/server";
 
-export const config = {
-    maxDuration: 60, // seconds
-};
-
 export async function POST(req: Request) {
     try {
         const body = await req.json();
@@ -15,6 +11,11 @@ export async function POST(req: Request) {
         if (!text || typeof text !== 'string') {
             return NextResponse.json({ error: 'Invalid input. Please provide a valid text.' }, { status: 400 });
         }
+
+        return NextResponse.json({
+            message: 'Text received successfully.',
+            text
+        }, { status: 200 });
 
         const businessPlan = await extractBusinessInfo(text);
 
