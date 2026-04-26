@@ -34,7 +34,12 @@ async function scrapeWithPlaywright(url: string, baseDomain: string): Promise<{ 
         console.log('Args:', isLocal ? [] : chromium.args);
 
         browser = await playwright.launch({
-            args: isLocal ? [] : chromium.args,
+            args: isLocal ? [] : [
+                ...chromium.args,
+                '--disable-dev-shm-usage',
+                '--disable-gpu',
+                '--disable-extensions',
+            ],
             executablePath: executablePath,
             headless: true,
         });
