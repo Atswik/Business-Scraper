@@ -1,7 +1,8 @@
 
 import * as cheerio from 'cheerio';
 import axios from 'axios';
-import { webkit, Browser } from 'playwright';
+import { chromium as playwright, Browser } from 'playwright-core';
+import chromium from '@sparticuz/chromium';
 
 const ACCEPTABLE_KEYWORDS = [
     'about', 'about-us', 'our-story',
@@ -22,7 +23,11 @@ export function prioritizeURLs(urls: string[]): string[] {
 async function scrapeWithPlaywright(url: string, baseDomain: string): Promise<{ content: string, links: string[] }> {
     let browser: Browser | null = null;
     try {
-        browser = await webkit.launch({ headless: true });
+        browser = await playwright.launch({
+            args: chromium.args,
+            executablePath: await chromium.executablePath(),
+            headless: true,
+        });
         const page = await browser.newPage();
         await page.goto(url, { waitUntil: 'networkidle', timeout: 15000 });
 
