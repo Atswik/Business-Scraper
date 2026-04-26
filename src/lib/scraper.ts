@@ -46,6 +46,11 @@ async function scrapeWithPlaywright(url: string, baseDomain: string): Promise<{ 
         await page.waitForLoadState('networkidle', { timeout: 5000 })
             .catch(() => console.log('networkidle timeout - proceeding with load'));
 
+        if (page.isClosed()) {
+            console.error('Page was closed before evaluation');
+            return { content: '', links: [] };
+        }
+
         console.log('Page loaded successfully');
 
         const result = await page.evaluate((domain) => {
