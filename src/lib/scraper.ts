@@ -41,8 +41,10 @@ async function scrapeWithPlaywright(url: string, baseDomain: string): Promise<{ 
         const page = await browser.newPage();
         await page.goto(url, { waitUntil: 'load', timeout: 15000 });
 
-        // await page.waitForLoadState('networkidle', { timeout: 5000 })
-        //     .catch(() => console.log('networkidle timeout - proceeding with load'));
+        await page.waitForTimeout(3000);
+
+        await page.waitForLoadState('networkidle', { timeout: 5000 })
+            .catch(() => console.log('networkidle timeout - proceeding with load'));
 
         console.log('Page loaded successfully');
 
